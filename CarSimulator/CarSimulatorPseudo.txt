@@ -1,0 +1,183 @@
+abstract Class Vehicle
+	Properties
+		protected int x, y
+		protected boolean alive
+
+	//super constructor method
+	public Vehicle(int x, int y)
+		initializes x, y and alive
+
+	//abstract Move method to be used in the subclasses of vehicle
+	public abstract void move() throws Exception;
+
+	//checks if car is alive
+	public bool isAlive()
+		return alive
+
+	@Override //overriding toString() method
+	public String toString()
+		return "Position : x and y"
+
+ENDCLASS
+
+-----------------------------------------------------------
+
+class Car inherits from Vehicle
+	Properties
+		private final String type = "CAR"; //used as label for instantiated vehicle object
+		
+		//constructor calling superconstructor
+		public Car(int x, int y)
+			super(x, y)//the call for superconstructor
+
+		@Override // override of move() method
+		public void move() throws Exception
+			if (car is not alive)
+				throw "Vehicle is dead" exception
+			//TODO implement the movement of the car with a random number generator and different combinations of movement
+			//designated to specific random numbers, use if statement
+
+		@Override // override of toString() method
+		public String toString()
+			return type + ": " + super.toString() //calling superclass to string method which will display the car type and position
+ENDCLASS
+
+
+-----------------------------------------------------------
+class Truck inherits from Vehicle
+	Properties
+		private final String type = "Truck"
+
+		//Truck constructor
+		public Truck(int x , int y)
+			super(x, y) //calling superconstructor
+
+		@override
+		public void move() throws new Exception
+			if( truck is not alive)
+				throw new Exception "Trucks dead"
+
+			//TODO implement movement for truck, like the car
+
+		@override
+		public String toString()
+			return type + ": " + super.toString(); //calling superclass toString method, displaying type and position
+			
+ENDCLASS
+
+------------------------------------------------------------
+
+class SportsCar inherits from Vehicle
+	Properties
+		private final String type = "SportsCar"
+
+		//SportsCar constructor
+		public SportsCar(int x , int y)
+			super(x, y) //calling superconstructor
+
+		@override
+		public void move() throws new Exception
+			if( sportsCar is not alive)
+				throw new Exception "Sportscar's dead"
+
+			//TODO implement movement for sportscar, like the car
+
+		@override
+		public String toString()
+			return type + ": " + super.toString(); //calling superclass toString method, displaying type and position
+
+			//Implement turn movement with if statement and random number generator w/ values associated to possible scenarios outlined in project planner from cdi
+
+-------------------------------------------------------------
+
+class Tractor inherits from Vehicle
+	Properties
+		private final String type = "Tractor"
+
+		//Tractor constructor
+		public Tractor(int x , int y)
+			super(x, y) //calling superconstructor
+
+		@override
+		public void move() throws new Exception
+			if( Tractor is not alive)
+				throw new Exception "Sportscar's dead"
+
+			//TODO implement movement for tractor, like the car
+
+		@override
+		public String toString()
+			return type + ": " + super.toString(); //calling superclass toString method, displaying type and position
+
+			//Implement turn movement with if statement and random number generator w/ values associated to possible scenarios outlined in project planner from cdi
+
+ENDCLASS
+
+-------------------------------------------------------------
+
+class Field	
+	Properties
+		private int[][] vertices; //field vertex points
+		private ArrayList<Vehicles> vehicles;
+		
+		//Field constructor
+		public Field(int length, int carCount, int truckCount, int sportsCar count, int tractorCount)
+			//Initialize the field and populate the vehicles, use minimum values of each vehicles count
+			// to handle the exceptions thrown of invalid amounts of vehicles the user enters
+
+		//kills vehicle
+		public void killVehicle(Vehicle vehicle)
+			vehicle.alive = false;
+
+		//checks for out of bounds and implement methods to move the vehicles
+		public bool outOfBounds(int x, int y)
+			if(current coordinates exceed the field limit set by user)
+				vehicle.killVehicle() //kill the vehicle
+
+ENDCLASS
+
+------------------------------------------------------------
+ class Simulator
+	private Field field;
+	private int turnCount
+	//constructor for simulator
+	public Simulator
+		//intialize field variable and turncount to 0
+	
+	//Main simulation loop, iterating through turns using for statements
+	public void run()
+		//insert loops here
+
+
+//Add in extra helpers to aid with simulation.
+
+------------------------------------------------------------
+/////////////////////////WHERE THE MAGIC HAPPENS///////////////////////////////
+class Main
+	PROGRAM START
+		New userInput scanner
+		int remainingVehicles;
+
+		//Prompt for input
+		"Enter quad length"
+		length = userInput
+		"Enter number of vehicles"
+			vehicleCount = userInput
+			remainingVehicles = vehicleCount
+		"Enter number of cars, {remainingVehicles} vehicles remain." //Tells user how many vehicles are left to assign to upcoming vehicle types
+			carCount = userInput
+			remaining vehicles -= carCount
+		"Enter number of trucks, {remainingVehicles} vehicles remain.
+			truckCount = userInput
+			remaining vehicles -= truckCount
+		"Enter number of sportscars, {remainingVehciles} vehicles remain.
+			sportscarCount = userInput
+			remainingVehicles -= sportcarCount
+		//Assigns whatever vehicles remain to tractor
+		tractorCount = remainingVehicles
+
+		//Initializing the simulator
+		Field field = new Field(length, carCount, truckCount,sportscarCount, tractorCount) // constructs a field based off users inputs
+		Simulator simulator = new Simulator(field)
+		
+			
